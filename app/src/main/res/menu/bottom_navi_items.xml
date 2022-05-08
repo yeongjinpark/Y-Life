@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navi_phone"
+        android:icon="@drawable/phone2"
+        android:enabled="true"
+        android:title="" />
+    <item
+        android:id="@+id/navi_map"
+        android:icon="@drawable/map"
+        android:enabled="true"
+        android:title="" />
+
+    <item
+        android:id="@+id/navi_wheather"
+        android:icon="@drawable/weather"
+        android:enabled="true"
+        android:title="" />
+    <item
+        android:id="@+id/navi_kiosk"
+        android:icon="@drawable/kiosk"
+        android:enabled="true"
+        android:title="" />
+</menu>
