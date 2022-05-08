@@ -43,7 +43,6 @@ public class MenuMap extends Fragment implements
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.menu_map, container, false);
 
-
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
 
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();

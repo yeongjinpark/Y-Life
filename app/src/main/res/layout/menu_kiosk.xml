@@ -6,14 +6,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".view.menu.MenuKiosk">
-
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/youtube_player_view"
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubePlayerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"/>
 
-        app:videoId="S0Q4gqBUs7c"
-        app:autoPlay="true" />
+<Button
+    android:id="@+id/btn_play"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+
+
+
+<!--    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
+<!--        android:id="@+id/youtube_player_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        app:videoId="@string/url"-->
+<!--        app:autoPlay="true" />-->
 
 
 </LinearLayout>
