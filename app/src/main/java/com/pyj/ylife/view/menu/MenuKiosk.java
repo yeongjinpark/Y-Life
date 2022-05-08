@@ -38,61 +38,61 @@ public class MenuKiosk extends YouTubePlayerFragment {
         view = inflater.inflate(R.layout.menu_kiosk,container,false);
         btn_play = view.findViewById(R.id.btn_play);
 
-        initPlayer();
-
-        btn_play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                playVideo();
-            }
-        });
+//        initPlayer();
+//
+//        btn_play.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                playVideo();
+//            }
+//        });
 
         return view;
     }
-    private void playVideo() {
-        if(player != null) {
-            if(player.isPlaying()) {
-                player.pause();
-            }
-            player.cueVideo(videoId);
-        }
-    }
-    //유튜브 플레이어 메서드
-    private void initPlayer() {
-        playerView = findViewById(R.id.youTubePlayerView);
-        playerView.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                player = youTubePlayer;
-                player.setPlayerStateChangeListener(new YouTubePlayer.PlayerStateChangeListener() {
-                    @Override
-                    public void onLoading() {
-                    }
-                    @Override
-                    public void onLoaded(String id) {
-                        Log.d(TAG, "onLoaded: " + id);
-                        player.play();
-                    }
-                    @Override
-                    public void onAdStarted() {
-                    }
-                    @Override
-                    public void onVideoStarted() {
-                    }
-                    @Override
-                    public void onVideoEnded() {
-                    }
-                    @Override
-                    public void onError(YouTubePlayer.ErrorReason errorReason) {
-                        Log.d(TAG, "onError: " + errorReason);
-                    }
-                });
-            }
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-            }
-        });
-    }
+//    private void playVideo() {
+//        if(player != null) {
+//            if(player.isPlaying()) {
+//                player.pause();
+//            }
+//            player.cueVideo(videoId);
+//        }
+//    }
+//    //유튜브 플레이어 메서드
+//    private void initPlayer() {
+//        playerView = findViewById(R.id.youTubePlayerView);
+//        playerView.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
+//            @Override
+//            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+//                player = youTubePlayer;
+//                player.setPlayerStateChangeListener(new YouTubePlayer.PlayerStateChangeListener() {
+//                    @Override
+//                    public void onLoading() {
+//                    }
+//                    @Override
+//                    public void onLoaded(String id) {
+//                        Log.d(TAG, "onLoaded: " + id);
+//                        player.play();
+//                    }
+//                    @Override
+//                    public void onAdStarted() {
+//                    }
+//                    @Override
+//                    public void onVideoStarted() {
+//                    }
+//                    @Override
+//                    public void onVideoEnded() {
+//                    }
+//                    @Override
+//                    public void onError(YouTubePlayer.ErrorReason errorReason) {
+//                        Log.d(TAG, "onError: " + errorReason);
+//                    }
+//                });
+//            }
+//            @Override
+//            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+//            }
+//        });
+//    }
 
 
 }
