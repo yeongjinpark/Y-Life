@@ -2,6 +2,8 @@ package com.pyj.ylife.view.menu;
 
 import static android.app.Activity.RESULT_OK;
 
+import static java.lang.String.format;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -94,8 +96,9 @@ public class MenuWeather extends Fragment {
                                     Log.i("MenuWeather",openWeather.toString());
 
                                     //tv_main.setText(String.valueOf(ow.getWeather().get(0).getMain()));
-                                    tv_temp.setText(String.valueOf(ow.getMain().getTemp()));
+                                    tv_temp.setText(String.valueOf(Math.floor(ow.getMain().getTemp()-273.15)+" ºC"));
                                     todayIcon(ow.getWeather().get(0).getIcon());
+                                    Log.i("weathericon",ow.getWeather().get(0).getIcon().toString());
                                 }
                             });
                         }
