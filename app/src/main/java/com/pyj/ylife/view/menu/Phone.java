@@ -1,8 +1,9 @@
 package com.pyj.ylife.view.menu;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.provider.AlarmClock;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.pyj.ylife.R;
 import com.pyj.ylife.view.menu.phone.Call;
+import com.pyj.ylife.view.menu.phone.calendar_memo;
 
 public class Phone extends Fragment {
     private View view;
@@ -45,6 +47,7 @@ public class Phone extends Fragment {
         iv_Album = (ImageView)view.findViewById(R.id.iv_Album);
     }
 
+
     Button.OnClickListener onClickListener = new Button.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -53,13 +56,17 @@ public class Phone extends Fragment {
                     myStartActivity(Call.class);
                     break;
                 case R.id.iv_Msg:
-
+                    myStartActivity(calendar_memo.class);
                     break;
 
                 case R.id.iv_Camera:
+                    Intent mlntent_camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivity(mlntent_camera);
                     break;
 
                 case R.id.iv_Album:
+                    Intent mlntent_album= new Intent(Intent.ACTION_VIEW, Uri.parse("content://media/internal/images/media"));
+                    startActivity(mlntent_album);
                     break;
             }
         }

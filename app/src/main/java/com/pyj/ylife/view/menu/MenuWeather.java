@@ -95,6 +95,12 @@ public class MenuWeather extends Fragment {
                                     ow = WViewModel.getWeather().getValue();
                                     Log.i("MenuWeather",openWeather.toString());
 
+                                    //MAIN 날씨
+                                    String main= String.valueOf(ow.getWeather().get(0).getMain());
+                                    //description
+                                    String description=String.valueOf(ow.getWeather().get(0).getDescription());
+
+
                                     //tv_main.setText(String.valueOf(ow.getWeather().get(0).getMain()));
                                     tv_temp.setText(String.valueOf(Math.floor(ow.getMain().getTemp()-273.15)+" ºC"));
                                     todayIcon(ow.getWeather().get(0).getIcon());
