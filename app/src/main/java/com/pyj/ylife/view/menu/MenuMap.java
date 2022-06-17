@@ -68,9 +68,9 @@ public class MenuMap extends Fragment implements
             }
         });
 
+
+        //지도 API를 사용하기위해 객체 선언 하는 부분
         SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-
-
         mapFragment = SupportMapFragment.newInstance();
         getFragmentManager()
                 .beginTransaction()
@@ -79,7 +79,7 @@ public class MenuMap extends Fragment implements
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @SuppressLint("MissingPermission")
             @Override
-            public void onMapReady(@NonNull GoogleMap googleMap) {
+            public void onMapReady(@NonNull GoogleMap googleMap) { //지도를 사용할 준비가 되었고, 지도API를 사용하는곳
                 Log.i("MyLocTest","지도 준비됨");
                 map = googleMap;
 
@@ -92,7 +92,7 @@ public class MenuMap extends Fragment implements
         return view;
     }
 
-
+    //현재위치를 좌표로 받아오는 함수
     @SuppressLint("MissingPermission")
     private void getNowLocation(){
         fusedLocationClient.getLastLocation()

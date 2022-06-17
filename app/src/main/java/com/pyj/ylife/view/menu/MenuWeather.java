@@ -57,7 +57,7 @@ import java.util.Objects;
 
 public class MenuWeather extends Fragment {
     View view;
-    private MenuWeatherViewModel WViewModel;
+    private MenuWeatherViewModel WViewModel; //날씨 정보를 담는곳
     private OpenWeather ow;
 
     private FusedLocationProviderClient fusedLocationClient;
@@ -81,16 +81,20 @@ public class MenuWeather extends Fragment {
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
                     @Override
-                    public void onSuccess(Location location) {
+                    public void onSuccess(Location location) { //location은 현재 위치 좌표값
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
                             Log.i("getLatLon",location.getLatitude()+","+location.getLongitude());
+
+                            //ViewModel 객체를 생성하고 선언
                             WViewModel = new ViewModelProvider(requireActivity()).get(MenuWeatherViewModel.class);
+                            //gps로 부터 받아온 좌표값 location을 이용하여 API 설정
                             WViewModel.init(new LatLng(location.getLatitude(),location.getLongitude()));
 //                            WViewModel.init(new LatLng(latitude,longitude));
+                            //날씨정보를 가져오는 곳
                             WViewModel.getWeather().observe(getViewLifecycleOwner(), new Observer<OpenWeather>() {
                                 @Override
-                                public void onChanged(OpenWeather openWeather) {
+                                public void onChanged(OpenWeather openWeather) {//가져오는데 성공했을때
                                     Log.i("MenuWeather","API Conn");
                                     ow = WViewModel.getWeather().getValue();
                                     Log.i("MenuWeather",openWeather.toString());
@@ -114,7 +118,8 @@ public class MenuWeather extends Fragment {
         return view;
     }
 
-
+    //현재 날씨에 맞는 아이콘을 사용(OpenWeatherAPI공식 아이콘)
+    //Glide 라이브러리를 사용하여 이미지 사용
     public void todayIcon(String weather){
         String imageURL = "https://openweathermap.org/img/wn/"+weather+"@2x.png";
         Glide.with(getContext()).load(imageURL).into(iv_weather_icon);

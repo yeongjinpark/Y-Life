@@ -34,20 +34,28 @@ public class OpenWeatherRepos {
         this.latLng = latLng;
     }
 
+    //Retrofit2 를 사용하기위해 Retrofit.Builder()를 사용해서 인스턴스 생성
     public MutableLiveData<OpenWeather> getWeather(){
+        //Retrofit을 사용하기 위해 WeatherAPI url설정
         retrofit = new Retrofit.Builder().baseUrl(URL).addConverterFactory(GsonConverterFactory.create())
                 .build();
+        //OpenWeatherAPI 객체 구현
         openAPI = retrofit.create(OpenWeatherAPI.class);
 
         openWeather = new OpenWeather();
         MutableLiveData<OpenWeather> data = new MutableLiveData<>();
+        //실질적으로 API를 사용하는곳
+        //조회할려는 위치 정보, API 사용자 고유번호를 입력하고,
+        //정보를 얻어와서 data에 날씨정보를 담아둔다.
         callWeatherAPI(data);
         return data;
     }
 
     private void callWeatherAPI(MutableLiveData<OpenWeather> data){
         Log.i("LatLong", String.valueOf(latLng.latitude));
+        //위치정보와 API 번호를 이용해서 'OpenWeatherAPI'를 통해 날씨정보를 조회
         Call<OpenWeather> call = openAPI.getWeather(String.valueOf(latLng.latitude), String.valueOf(latLng.longitude),"0b93eae510fc7849431559f5bace3e8e");
+        //날씨 API로 부터 받아온 정보를 정상적으로 받아왔으면 OnResponse, 받아오는데 실패 했으면 OnFailure
         call.enqueue(new Callback<OpenWeather>(){
             @Override
             public void onResponse(Call<OpenWeather> call, Response<OpenWeather> response) {

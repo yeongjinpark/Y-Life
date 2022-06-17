@@ -62,12 +62,12 @@ public class Logo extends AppCompatActivity {
         super.onStart();
         checkLocationPermission();
     }
-
+    //위치정보를 사용하기 위해 권한을 받았는지 권한허용 확인 유무 확인하는 함수
     private void checkLocationPermission() {
         int accessLocation = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
-        if (accessLocation == PackageManager.PERMISSION_GRANTED) {
-            checkLocationSetting();
-        } else {
+        if (accessLocation == PackageManager.PERMISSION_GRANTED) {//위치 권한이 허용되어있으면
+            checkLocationSetting();//위치 권한을 사용설정해주는 함수
+        } else {//권한을 요청
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, GPS_UTIL_LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
@@ -172,11 +172,7 @@ public class Logo extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-//                    Intent intent = new Intent(Logo.this, MainActivity.class);
-//                    intent.putExtra("latitude", latitude);
-//                    intent.putExtra("longitude", longitude);
-//                    startActivity(intent);
-//                    finish();
+
                     myStartActivity(MainActivity.class);
                 }
             },2500);
