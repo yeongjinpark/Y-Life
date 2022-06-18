@@ -65,6 +65,7 @@ public class MenuWeather extends Fragment {
     private TextView tv_temp;
     private TextView tv_main;
     private ImageView iv_weather_icon;
+    private TextView tv_print;
 
     @SuppressLint("MissingPermission")
     @Nullable
@@ -74,6 +75,7 @@ public class MenuWeather extends Fragment {
         view = inflater.inflate(R.layout.menu_weather,container,false);
         tv_main = view.findViewById(R.id.tv_main);
         tv_temp = view.findViewById(R.id.tv_temp);
+        tv_print = view.findViewById(R.id.tv_print);
         iv_weather_icon = view.findViewById(R.id.iv_weather_icon);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getContext());
@@ -104,6 +106,7 @@ public class MenuWeather extends Fragment {
                                     //description
                                     String description=String.valueOf(ow.getWeather().get(0).getDescription());
 
+                                    todayprint(description);
 
                                     //tv_main.setText(String.valueOf(ow.getWeather().get(0).getMain()));
                                     tv_temp.setText(String.valueOf(Math.floor(ow.getMain().getTemp()-273.15)+" ºC"));
@@ -124,6 +127,40 @@ public class MenuWeather extends Fragment {
         String imageURL = "https://openweathermap.org/img/wn/"+weather+"@2x.png";
         Glide.with(getContext()).load(imageURL).into(iv_weather_icon);
 
+    }
+
+    public void todayprint(String description){
+        if(description.equals("clear sky")) {
+            tv_print.setText("맑은 날씨 입니다.\n산책을 추천드립니다.");
+        }
+        else if(description.equals("few clouds")) {
+            tv_print.setText("조금 흐린 날씨입니다.\n가벼운 외출도 괜찮아보입니다.");
+        }
+        else if(description.equals("scattered clouds")) {
+            tv_print.setText("흐린 날씨입니다.\n혹시 모르니 외출시 우산을 챙기세요");
+        }
+        else if(description.equals("broken clouds")) {
+            tv_print.setText("매우 흐린 날씨 입니다.\n비가 올수도 있겠군요");
+        }
+        else if(description.equals("overcast clouds")) {
+            tv_print.setText("엄청 흐린 날씨 입니다.\n 빨래가 잘 마르지 않을겁니다.");
+        }
+
+        else if(description.equals("shower rain")) {
+            tv_print.setText("소나기가 옵니다.\n 창문을 닫아주세요");
+        }
+        else if(description.equals("rain")) {
+            tv_print.setText("비가 옵니다.\n오늘 저녁은 파전을 추천드립니다.");
+        }else if(description.equals("thunderstorm")) {
+            tv_print.setText("번개가 치고있습니다.\n외출을 자제하세요");
+        }else if(description.equals("snow")) {
+            tv_print.setText("눈이 오고있습니다.\n외출 시 미끄럼 주의하세요.");
+        }else if(description.equals("mist")) {
+            tv_print.setText("안개가 꼈습니다.\n외출 시 마스크를 착용해주세요.");
+        }
+        else{
+            tv_print.setText("알수없음");
+        }
     }
 
 }
