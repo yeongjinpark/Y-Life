@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 
 import com.pyj.ylife.R;
 import com.pyj.ylife.view.menu.phone.Call;
-import com.pyj.ylife.view.menu.phone.calendar_memo;
 
 public class Phone extends Fragment {
     private View view;
@@ -48,7 +47,7 @@ public class Phone extends Fragment {
     }
 
 
-    Button.OnClickListener onClickListener = new Button.OnClickListener() {
+    Button.OnClickListener onClickListener = new Button.OnClickListener() { //버튼 클릭시 해당 class나 해당 기능 이용
         @Override
         public void onClick(View v) {
             switch (v.getId()){
@@ -56,7 +55,8 @@ public class Phone extends Fragment {
                     myStartActivity(Call.class);
                     break;
                 case R.id.iv_Msg:
-                    myStartActivity(calendar_memo.class);
+                    Intent mlntent_naver= new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.naver.com"));
+                    startActivity(mlntent_naver);
                     break;
 
                 case R.id.iv_Camera:
@@ -73,7 +73,7 @@ public class Phone extends Fragment {
     };
 
 
-    private void myStartActivity(Class c){
+    private void myStartActivity(Class c){           //설계한 class를 불러오는 함수
         Intent intent = new Intent(getContext(),c);
         startActivity(intent);
     }

@@ -24,9 +24,6 @@
             android:name=".view.menu.phone.Call"
             android:exported="false" />
         <activity
-            android:name=".view.menu.phone.calendar_memo"
-            android:exported="false" />
-        <activity
             android:name=".view.menu.phone.Kioskvideo"
             android:exported="false" />
         <activity

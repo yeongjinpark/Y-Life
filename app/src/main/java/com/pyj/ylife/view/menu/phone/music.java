@@ -19,8 +19,8 @@ public class music extends YouTubeBaseActivity {
     YouTubePlayerView playerView;
     YouTubePlayer player;
 
-    Random random = new Random();
-    int randomValue = random.nextInt(9);
+    Random random = new Random();  //난수 생성을 위한 random선언
+    int randomValue = random.nextInt(9); //0~9까지 난수 생성
 
 
     //유튜브 API KEY와 동영상 ID 변수 설정

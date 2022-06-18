@@ -71,7 +71,9 @@ public class MenuWeather extends Fragment {
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
-    public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater,
+                             @Nullable @org.jetbrains.annotations.Nullable ViewGroup container,
+                             @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.menu_weather,container,false);
         tv_main = view.findViewById(R.id.tv_main);
         tv_temp = view.findViewById(R.id.tv_temp);
